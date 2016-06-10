@@ -1,0 +1,60 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	padding-top:50px; 
+	background-color: #222222;
+}
+.carousel{
+	height: 400px;
+	background-color: #000;
+}
+.carousel .item{
+	height: 400px;
+	background-color: #000;
+}
+.carousel img{
+	width: 100%;
+}
+.carousel-caption{
+	
+}
+.container{
+	margin-top: 40px;
+}
+.tab-pane{
+	color: #fff;
+}
+li{
+	list-style: none;
+}
+.media{
+	padding-top: 30px;
+}
+.notice{
+	color: #fff;
+}
+
+.notice h3{
+	padding-bottom: 20px;
+}
+.notice p:first-of-type{
+	font-size: 1.5em;
+}
+.media-body div{
+	font-size: 1em;
+}
+.media-body h1{
+	font-size: 2em;
+	padding-top: 10px;
+}
+.nav-tabs a{
+	color: #fff;
+}
+footer p{
+	color: #fff;
+}
+.media-object{
+	width: 90%;
+}
