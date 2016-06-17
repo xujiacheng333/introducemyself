@@ -42,7 +42,16 @@
 					<li><a href="#">吴庆华</a></li>
 				</ul>
 			</li>
-
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">位置选择<span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu" id="pos">
+					<li><a href="#top">上单</a></li>
+					<li><a href="#mid">中单</a></li>
+					<li><a href="#ADC">ADC</a></li>
+					<li><a href="#ye">打野</a></li>
+					<li><a href="#fuzhu">辅助</a></li>
+				</ul>
+			</li>
 			<li><a href="##">战队战绩</a></li>
 			<li><a href="##">来约一发？</a></li>
 			<li><a href="#">群内笑点</a></li>
@@ -119,7 +128,7 @@
 </div>
 <!-- 中部标签框 -->
 <div class="container">
-	<ul class="nav nav-tabs" role="tab-list">
+	<ul class="nav nav-tabs" role="tab-list" id="pos-respond">
 		<li><a href="#top" role="tab" data-toggle="tab" class="active">上单</a></li>
 		<li><a href="#mid" role="tab" data-toggle="tab">中单</a></li>
 		<li><a href="#ADC" role="tab" data-toggle="tab">ADC</a></li>
@@ -229,6 +238,16 @@
 	<!-- 导入js文件 -->
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function () {
+		$("#pos a").click(function(){
+			var href = $(this).attr("href");
+
+			$("#pos-respond a[href='"+ href +"']").tab("show")
+		})
+	})
+</script>
 </body>
 
 </html>

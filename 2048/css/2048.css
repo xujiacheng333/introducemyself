@@ -1,0 +1,47 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	// 文本不能被选中
+	-moz-user-select:none;/*火狐*/
+	 -webkit-user-select:none;/*webkit浏览器*/
+	 -ms-user-select:none;/*IE10*/
+	 -khtml-user-select:none;/*早期浏览器*/
+	 user-select:none;
+}
+td{
+	width: 50px;
+	height: 50px;
+	border:1px solid #ccc;
+	border-radius: 2px;
+	text-align: center;
+	font-size: 30px;
+	background-color: #e2f0f3;
+	font-family: "Calibri";
+	color: #fff;
+	transition:background-color 0.15s linear;
+}
+body{
+	position: relative;
+
+}
+table{
+	border:5px solid #2B2B2B;
+	background-color: #2B2B2B;
+	border-radius: 5px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,50%)
+
+}	
+h1{
+	text-align: center;
+	font-size: 50px;
+	color: #121212;
+}
+#info{
+	text-align: center;
+	color: #121212;
+	font-size: 40px;
+}
