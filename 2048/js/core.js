@@ -56,9 +56,6 @@
 				}		
 			}
 			function touch(document) {
-				console.log(" touch ok")
-				var table = document.getElementById('table')
-				console.log(table)
 				var downX = 0,
 					downY = 0,
 					upX = 0 ,
@@ -67,14 +64,14 @@
 					moveY = 0,
 					keycode= null ;
 
-				table.ontouchstart =function () {
+				document.addEventListener("touchstart",function () {
 					var touch = event.targetTouches[0]
 					downX = touch.pageX;
 					downY = touch.pageY;
-					console.log("start!",downX,downY)
-				}
-				table.ontouchend =function () {
-					var touch = event.targetTouches[0]
+					console.log(downX,downY)
+				})
+				document.addEventListener("touchend",function () {
+					var touch = event.changedTouches[0];
 					upX = touch.pageX;
 					upY = touch.pageY;
 					moveX = upX - downX ;
@@ -109,7 +106,7 @@
 					moveX = 0 ;
 					moveY = 0;
 					keycode = null;
-				}		
+				})	
 			}
 			function key(document) {
 				document.onkeyup =function () {
