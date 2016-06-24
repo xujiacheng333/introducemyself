@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission33</title>
+	<style>
+
+	</style>
+</head>
+<body>
+	<!-- 一个格子30*30 -->
+	<canvas id="canvas" width="330" height="330"></canvas>
+	<div>
+		<input type="button" value="前进" onclick="go()">
+		<input type="button" value="左转" onclick="left()">
+		<input type="button" value="右转" onclick="right()">
+		<input type="button" value="向后转" onclick="backward()">
+		<input type="text" id="control" placeholder="left、right、backfard或数字 ">
+		<input type="button" value="操作" onclick="doit()" >
+	</div>
+	
+
+	<script>
+
+		//定义一个格子所在的位置
+		var Grid ={
+			x:6,
+			y:6,
+			dec:'up'
+		}
+	
+		//定时器
+		var timer = setInterval(function () {
+			var canvas = document.getElementById('canvas');
+			var context =canvas.getContext('2d');
+			context.clearRect(0,0,330,330)
+			grid(context)
+			num(context)
+			rect(context,Grid.x,Grid.y,Grid.dec)
+		},50)
+
+		//画格子
+		function grid(context) {
+			for(var i = 1 ; i< 12 ;i++){
+				context.beginPath();
+				context.moveTo(30*i,30);
+				context.lineTo(30*i,330);
+				context.strokeStyle="#ccc";
+				context.stroke();
+				context.closePath();
+			}
+			for(var j = 1 ; j <12 ; j++){
+				context.beginPath();
+				context.moveTo(30,30*j);
+				context.lineTo(330,30*j);
+				context.strokeStyle="#ccc";
+				context.stroke();
+				context.closePath();
+			}
+		}
+		//画数字
+		function num(context) {	
+			for(var i = 1 ; i<11 ; i++){
+				context.beginPath()
+				context.fillStyle="#000";
+				context.font="15px sans-serif";
+				context.fillText(i,30*i+10,30-5)
+				context.closePath()
+			}
+			for(var j = 1 ; j<11 ; j++){
+				context.beginPath()
+				context.fillStyle="#000";
+				context.font="15px sans-serif";
+				context.fillText(j,10,30*j+20)
+				context.closePath()
+			}
+		}
+		function rect(context,i,j,dec) {
+			//正方形
+			context.beginPath()
+			context.fillStyle="red";
+			context.fillRect(30*i,30*j,30,30);
+			context.closePath()
+			context.fill();
+			//代表方向的长方形
+			if (dec=="up") {
+				//向上
+				context.beginPath()
+				context.fillStyle="green";
+				context.fillRect(30*i,30*j,30,10);
+				context.closePath()
+				context.fill();
+			}else if(dec == "down"){
+				//向下
+				context.beginPath()
+				context.fillStyle="green";
+				context.fillRect(30*i,30*j+20,30,10);
+				context.closePath()
+				context.fill();
+			}else if (dec == "left") {
+				//向左
+				context.beginPath()
+				context.fillStyle="green";
+				context.fillRect(30*i,30*j,10,30);
+				context.closePath()
+				context.fill();
+			}else if (dec == "right") {
+				//向右
+				context.beginPath()
+				context.fillStyle="green";
+				context.fillRect(30*i+20,30*j,10,30);
+				context.closePath()
+				context.fill();
+			}
+		}
+
+
+		function go(num) {
+			if (num == null) {
+				num = 1;
+			}
+			for(var i = 0 ; i<num ; i++){
+				if (Grid.dec == "up") {
+						Grid.y=(Grid.y)>1?(Grid.y-1):1;
+				}else if(Grid.dec == "down"){
+					Grid.y=(Grid.y)<10?(Grid.y+1):10;//待测试
+				}else if(Grid.dec == "left"){
+					Grid.x=(Grid.x)>1?(Grid.x-1):1
+				}else if (Grid.dec == "right") {
+					Grid.x=(Grid.x)<10?(Grid.x+1):10;
+				}
+			
+			}
+			
+			
+		}
+		function left() {
+			if (Grid.dec == "up") {
+				Grid.dec = "left"
+			}else if(Grid.dec == "down"){
+				Grid.dec = "right"
+			}else if(Grid.dec == "left"){
+				Grid.dec = "down"
+			}else if (Grid.dec == "right") {
+				Grid.dec = "up"
+			}
+		}
+		function right() {
+			if (Grid.dec == "up") {
+				Grid.dec = "right"
+			}else if(Grid.dec == "down"){
+				Grid.dec = "left"
+			}else if(Grid.dec == "left"){
+				Grid.dec = "up"
+			}else if (Grid.dec == "right") {
+				Grid.dec = "down"
+			}
+		}
+		function backward() {
+			if (Grid.dec == "up") {
+				Grid.dec = "down"
+			}else if(Grid.dec == "down"){
+				Grid.dec = "up"
+			}else if(Grid.dec == "left"){
+				Grid.dec = "right"
+			}else if (Grid.dec == "right") {
+				Grid.dec = "left"
+			}
+		}
+
+		var control = document.getElementById('control');
+
+		function doit() {
+			console.log(control.value)
+			if (control.value == "left") {
+				left();
+			}else if(control.value == "right"){
+				right();
+			}else if(control.value == "backward"){
+				backward();
+			}else if (control.value>0 && control.value<10) {
+				go(control.value)
+			}
+		}
+	</script>
+</body>
+</html>

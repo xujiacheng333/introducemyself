@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission20</title>
+</head>
+<body>
+	<textarea name="text" id="text" cols="30" rows="3" placeholder="请输入内容，以空格逗号等隔开"></textarea>
+	<input type="button" id="inputbtn1" value="左插入">
+	<input type="button" id="inputbtn2" value="右插入">
+	<input type="button" id="deletebtn1" value="左删除">
+	<input type="button" id="deletebtn2" value="右删除">
+	<input type="text" id="inputtext" placeholder="搜索内容 空格隔开">
+	<input type="button" id="searchbtn" value="搜索">
+	<div id="container"></div>
+	<script>
+			var DataArr = [];
+			var inputarr = [];
+		window.onload=function(){
+			var inputbtn1 = document.getElementById('inputbtn1')
+			var inputbtn2 = document.getElementById('inputbtn2')
+			var deletebtn1 = document.getElementById('deletebtn1')
+			var deletebtn2 = document.getElementById('deletebtn2')
+			var searchbtn = document.getElementById('searchbtn')
+			var txt = document.getElementById('text');
+			inputbtn1.onclick=function(){
+			inputarr=txt.value.match(/[^,，、\r 	\n\\\/]+/gm);//非空的数据
+			drawBox(inputarr,true);
+			Array.prototype.push.apply(inputarr, DataArr);
+			DataArr=inputarr;
+			}
+			inputbtn2.onclick=function(){
+			inputarr=txt.value.match(/[^,，、\r 	\n\\\/]+/gm);//非空的数据
+			drawBox(inputarr,false);
+			Array.prototype.push.apply(DataArr,inputarr);
+			}
+			deletebtn1.onclick=function () {
+			deletebox(true);
+			}
+			deletebtn2.onclick=function () {
+			deletebox(false);
+			}
+			searchbtn.onclick=function () {
+				var inputtext =document.getElementById('inputtext').value.match(/[^,，、\r 	\n\\\/]+/gm)
+				var items = document.getElementsByClassName('item')
+					for(var i = 0 ;i<items.length ; i++){
+						items[i].k=false;//尝试加入k属性
+						items[i].style.backgroundColor="#EE3B3B";
+						for(var k = 0; k<inputtext.length ; k++){
+							var pattern = new RegExp(inputtext[k]);
+							if (pattern.test(items[i].innerHTML)) {
+								items[i].style.backgroundColor="#9BCD9B";
+								items[i].k=true;//尝试加入K属性
+							}
+						}
+					}
+				
+				
+			}
+		}
+		function drawBox(inputarr,position) {
+			var container = document.getElementById('container');
+			for(var i =0;i<inputarr.length;i++){
+				var box = document.createElement("div");
+				box.style.width="200px";
+				box.style.height="100px";
+				box.style.backgroundColor="#EE3B3B";
+				box.style.float="left";
+				box.style.margin='10px 0 10px 10px';
+				box.style.fontSize="50px";
+				box.style.lineHeight= "100px";
+				box.style.textAlign="center"
+				box.style.borderRadius= "5px";
+				box.style.color="#fff";
+				box.style.cursor = "pointer"
+				box.innerHTML=inputarr[i];
+				box.className = "item";
+				//判断放在前还是后
+				if (position) {
+					container.insertBefore(box,container.firstChild)
+				}else {
+					container.appendChild(box);
+				}
+				//点击删除该方块
+				box.onclick=function () {
+					container.removeChild(this)
+				}
+				box.onmouseover=function () {
+					this.style.backgroundColor="#CD853F";
+				}
+				box.onmouseout= function () {
+					if (this.k) {
+					this.style.backgroundColor="#9BCD9B";	
+					}else{
+					this.style.backgroundColor="#EE3B3B";	
+					}
+				}
+			}
+		}
+		function deletebox(position){
+			var container = document.getElementById('container');
+			if (position) {
+				container.removeChild(container.firstChild)
+			}else{
+				container.removeChild(container.lastChild)
+			}
+		}
+	</script>
+</body>
+</html>

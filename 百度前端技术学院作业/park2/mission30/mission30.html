@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission30</title>
+	<style>
+	*{
+		font-family: "微软雅黑";
+		font-size: 18px;
+	}
+	.ok{
+		border: 1px solid #6B8E23;
+	}
+	.err{
+		border: 1px solid #CD2626;
+	}
+	input{
+		height: 20px;
+		width: 200px;
+		border-radius: 5px;
+	}
+	label{
+		height: 20px; 
+		width: 100px;
+		display: inline-block;
+		text-align: right;
+	}
+	button{
+		height: 30px;
+		width: 70px;
+		margin-left: 250px;
+	}
+	.gray{
+		font-size: 10px;
+		color: #A6A6A6;
+	}
+	.green{
+		font-size: 10px;
+		color: green;
+	}
+	.red{
+		font-size: 10px;
+		color: #CD2626;
+	}
+	p{
+		margin: 0 0 10px 100px;
+	}
+	</style>
+</head>
+<body>
+	<form action="" style="position: relative;">
+		<label for="name">名称：</label><input type="text" id="name">
+		<p id="name_msg"></p>
+		<label for="password">密码：</label><input type="password" id="password">
+		<p id="password_msg"></p>
+		<label for="password2">密码确认：</label><input type="password" id="password2" disabled="disabled">
+		<p id="password2_msg"></p>
+		<label for="email">邮箱：</label><input type="email" id="email">
+		<p id="email_msg"></p>
+		<label for="tel">手机：</label><input type="tel" id="tel">
+		<p id="tel_msg"></p>
+		<button>提交</button>
+	</form>
+
+	<script>
+		//获取id的函数
+		function g(ele) {return document.getElementById(ele);}
+
+		//判断邮箱地址是否正确
+		var re_email = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/g;
+		//判断电话号码是否正确
+		var re_tel = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/g;
+		//开始判断每一个输入框的内容是否正确;
+		//名字输入框
+		g('name').onfocus=function(){
+			g('name_msg').innerHTML="<span class='gray'>必填，长度为4~16个字符</span>";
+		}
+		g('name').onblur=function () {
+			//若为空 提示不能为空
+			if (this.value.length == 0) {
+			this.className = 'err';
+			g('name_msg').innerHTML="<span class='red'>必填，不能为空</span>";
+			}else if (this.value.length < 4 || this.value.length>16) {
+			this.className = 'err';
+			g('name_msg').innerHTML="<span class='red'>长度为4~16个字符</span>";
+			}else{
+			this.className = 'ok';
+			g('name_msg').innerHTML="<span class='green'>ok</span>";
+			}
+		}
+
+		//密码输入框
+		g('password').onfocus=function(){
+			g('password_msg').innerHTML="<span class='gray'>必填，长度为8~16个字符</span>";
+		}
+		g('password').onblur=function () {
+			//若为空 提示不能为空
+			if (this.value.length == 0) {
+			this.className = 'err';
+			g('password_msg').innerHTML="<span class='red'>必填，不能为空</span>";
+			g('password2').disabled=true;
+			}else if (this.value.length < 8 || this.value.length>16) {
+			this.className = 'err';
+			g('password_msg').innerHTML="<span class='red'>长度为8~16个字符</span>";
+			g('password2').disabled=true;
+			}else{
+			this.className = 'ok';
+			g('password_msg').innerHTML="<span class='green'>密码可用</span>";
+			g('password2').disabled=false;
+			}
+		}
+
+		//密码确认输入框
+		g('password2').onfocus=function(){
+			g('password2_msg').innerHTML="<span class='gray'>再输入一次密码</span>";
+		}
+		g('password2').onblur=function () {
+			//若为空 提示不能为空
+			if (this.value.length == 0) {
+			this.className = 'err';
+			g('password2_msg').innerHTML="<span class='red'>必填，不能为空</span>";
+			}else if (this.value != g('password').value){
+			this.className = 'err';
+			g('password2_msg').innerHTML="<span class='red'>密码不一致</span>";
+			}else{
+			this.className = 'ok';
+			g('password2_msg').innerHTML="<span class='green'>ok 密码一致</span>";
+			}
+		}
+
+		//邮箱输入框
+		g('email').onfocus=function(){
+			if (re_email.test(this.value)) {
+				this.className = 'ok';
+				g('email_msg').innerHTML="<span class='green'>ok</span>";
+			}else{
+				g('email_msg').innerHTML="<span class='gray'>选填，输入邮箱地址</span>";
+			}
+		}
+		g('email').onblur=function () {
+			if (this.value.length == 0) {
+				this.className='';
+			g('email_msg').innerHTML="";
+			}else if (re_email.test(this.value)){
+			this.className = 'ok';
+			g('email_msg').innerHTML="<span class='green'>ok</span>";
+			}else if (this.value.length > 0 && !re_email.test(this.value) ) {
+			this.className = 'err';
+			g('email_msg').innerHTML="<span class='red'>请输入正确的邮箱地址</span>";
+			}
+
+		}
+
+
+		//电话输入框
+		g('tel').onfocus=function(){
+			if (re_tel.test(this.value)) {
+				this.className = 'ok';
+				g('tel_msg').innerHTML="<span class='green'>ok</span>";
+			}else{
+				g('tel_msg').innerHTML="<span class='gray'>选填，输入手机号码</span>";
+			}
+		}
+		g('tel').onblur=function () {
+			if (this.value.length == 0) {
+				this.className='';
+			g('tel_msg').innerHTML="";
+			}else if (re_tel.test(this.value)){
+			this.className = 'ok';
+			g('tel_msg').innerHTML="<span class='green'>ok</span>";
+			}else if (this.value.length > 0 && !re_tel.test(this.value) ) {
+			this.className = 'err';
+			g('tel_msg').innerHTML="<span class='red'>请输入正确的手机号码</span>";
+			}
+		}
+
+
+	</script>
+</body>
+</html>

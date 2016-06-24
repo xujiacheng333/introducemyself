@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission23</title>
+	<style>
+	#root{
+		height: 300px;
+	}
+	div{
+		border:1px solid #999;
+		margin: 10px;
+		float: left;
+		background-color: #fff;
+	}
+	.inner{
+		width: 50px;
+		height: 200px;
+	}
+
+	</style>
+	<script src="mission23.js"></script>
+</head>
+<body>
+	<div id="root">habit
+		<div>book
+			<div>love
+				<div class="inner">alive</div>
+				<div class="inner">die</div>			
+			</div>
+			<div>terrible
+				<div class="inner">leave</div>
+				<div class="inner">left</div>
+			</div>
+		</div>
+		<div>video
+			<div>shenmegui
+				<div class="inner">phone</div>
+				<div class="inner">pc</div>
+			</div>
+			<div>wolegequ
+				<div class="inner">ipad</div>
+				<div class="inner">iphone</div>
+			</div>
+		</div>
+	</div>
+	<input type="button" onclick="transver('pre_')" value="前序排列" >
+	<input type="button" onclick="transver('in_')" value="中序排列" >
+	<input type="button" onclick="transver('bef_')" value="后序排列" >
+
+	<input type="text" id="searchtext" placeholder="输入搜索内容">
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+/*图片样式*/
+#face{
+	background-image: url(../img/face.jpg) ;
+	background-size: 200px 280px;
+
+	width: 200px;
+	height: 280px;
+} 
+
+.carousel{
+	height: 400px;
+	
+}
+.carousel .item{
+	height: 400px;
+}
+.carousel-caption{
+	color: #000;
+}
+.carousel img{
+	width: 100%;
+}

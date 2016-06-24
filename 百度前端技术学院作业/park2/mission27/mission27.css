@@ -1,0 +1,46 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color: black;
+}
+#control{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 400px;
+	height: 200px;
+	background-color: #919191;
+}
+
+#control h2{
+	text-align: center;
+	font-size: 30px;
+	border-bottom: 2px solid #fff;
+}
+#control *{
+	font-size: 15px;
+	font-family: "微软雅黑";
+	margin:3px 3px 3px 3px;
+}
+#control input{
+	padding: 2px;
+}
+#control div{
+	margin-top: 5px;
+}
+
+#massage{
+	position: absolute;
+	right: 20px;
+	top: 240px;
+	width: 400px;
+	height: 300px;
+	background-color: #919191;
+}
+
+#massage p{
+	font-size: 24px;
+	font-family: "微软雅黑";
+}

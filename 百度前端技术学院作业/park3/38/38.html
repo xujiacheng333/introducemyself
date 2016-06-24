@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>38</title>
+	<style>
+	table{
+		width: 350px;
+		height: 200px;
+		text-align: center;
+		font-size: 22px;
+		font-weight: bold;
+	}
+	th{
+		background-color: #CDBA96;
+	}
+	tr:nth-child(odd){
+		background-color: #CDC5BF;
+	}
+	input{
+		display: block;
+		width:40px;
+		background-color: transparent;
+		border: none;
+		text-align: center;
+		margin: auto;
+		font-size: 20px;
+		font-weight: normal;
+	}
+	.select{
+		height: 22px;
+		width: 70px;
+		display: inline-block;
+		line-height: 20px;
+		vertical-align: center;
+		cursor: pointer;
+	}
+	.select:hover{
+		background: url(sort.png) no-repeat;
+		background-position: right;
+		background-size: 8px 15px;
+	}
+	</style>
+</head>
+<body>
+	<table cellspacing="0" id="table">
+		<tr>
+		<th>名字</th>
+		<th><span class="select">数学</span></th>
+		<th><span class="select">语文</span></th>
+		<th><span class="select">英语</span></th>
+		<th><span class="select">总分</span></th>
+		</tr>
+		<tr>
+			<td><input type="text" value="小明"></td>
+			<td><input type="text" value="75"></td>
+			<td><input type="text" value="64"></td>
+			<td><input type="text" value="84"></td>
+			<td class="sum"><input type="text" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="text" value="小红"></td>
+			<td><input type="text" value="38"></td>
+			<td><input type="text" value="79"></td>
+			<td><input type="text" value="87"></td>
+			<td class="sum"><input type="text" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="text" value="小刚"></td>
+			<td><input type="text" value="40"></td>
+			<td><input type="text" value="98"></td>
+			<td><input type="text" value="68"></td>
+			<td class="sum"><input type="text" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="text" value="小土"></td>
+			<td><input type="text" value="100"></td>
+			<td><input type="text" value="45"></td>
+			<td><input type="text" value="80"></td>
+			<td class="sum"><input type="text" value=""></td>
+		</tr>
+	</table>
+	<input type="text" id="oinput" >
+	<p>点击科目可以重新排序，再次点击相同的科目可以按照另一种顺序排列</p>
+	<p>点击对应的分数数值或人名可以即时修改成绩，总分由程序自动计算</p>
+	<script>
+	//算总分
+
+	function sum() {
+		var trs = document.getElementsByTagName('tr')
+		for(var i = 1 ; i<trs.length ; i++){
+		var tdnum = trs[i].getElementsByTagName('td')
+		tdnum[4].firstChild.value=0;
+
+		for(var j = 1 ; j<4 ;j++){
+			var num = tdnum[j].getElementsByTagName('input')[0]
+			 tdnum[4].firstChild.value = parseInt(tdnum[4].firstChild.value) +parseInt(num.value);
+		}
+		}
+	}
+		sum();
+		document.onclick=function () {
+			sum();
+		}
+
+		var timer = setInterval(function () {
+			var selection = document.getElementsByClassName('select');
+			for (var i = 0 ; i<4 ;i++) {
+				(function(arg){  
+				    selection[i].onclick=function(){  
+				       doit(arg+1);  
+				    };  
+				  })(i);//调用时参数  
+			}
+		},100)
+		
+
+		//提取每一行的元素
+		var raws = document.getElementsByTagName('tr');
+		 var arr =[];
+		 for(var i = 1 ; i<raws.length ; i++){
+		 	arr.push(raws[i])
+		 }
+		console.log("ok")
+
+		var clickkey = [true,true,true,true];
+		function doit(k) {
+			if (clickkey[k-1] === true) {
+				arr.sort(function (a,b) {
+					var tda = a.getElementsByTagName('td')[k].firstChild
+					var tdb = b.getElementsByTagName('td')[k].firstChild
+					return tda.value-tdb.value
+				})
+				clickkey[k-1]=false;
+			}else if(clickkey[k-1] === false){
+				arr.sort(function (a,b) {
+					var tda = a.getElementsByTagName('td')[k].firstChild
+					var tdb = b.getElementsByTagName('td')[k].firstChild
+					return tdb.value-tda.value
+				})
+				clickkey[k-1]=true;
+			}
+			
+			clear()
+			
+		}
+
+		// 重排函数
+		function clear() {
+			var table = document.getElementById('table');			
+			while(table.firstChild){
+				table.removeChild(table.firstChild)
+			}
+			var trhead = document.createElement("tr")
+			 trhead.innerHTML = "<th>名字</th><th><span class='select'>数学</span></th><th><span class='select'>语文</span></th><th><span class='select'>英语</span></th><th><span class='select'>总分</span></th>"
+			table.appendChild(trhead)
+			for(var i = 0 ; i<arr.length ;i++){
+				table.appendChild(arr[i])
+			}
+		}
+	</script>
+</body>
+</html>

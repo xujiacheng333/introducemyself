@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission22</title>
+	<style>
+	#root{
+		height: 300px;
+		width: 750px;
+	}
+	div{
+		border:1px solid #999;
+		margin: 10px;
+		float: left;
+		background-color: #fff;
+	}
+	.inner{
+		width: 50px;
+		height: 200px;
+	}
+
+	</style>
+	<script src="mission22.js"></script>
+</head>
+<body>
+	<div id="root">
+		<div>
+			<div>
+				<div class="inner"></div>
+				<div class="inner"></div>			
+			</div>
+			<div>
+				<div class="inner"></div>
+				<div class="inner"></div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div class="inner"></div>
+				<div class="inner"></div>
+			</div>
+			<div>
+				<div class="inner"></div>
+				<div class="inner"></div>
+			</div>
+		</div>
+	</div>
+	<input type="button" onclick="transver('pre_')" value="前序排列" >
+	<input type="button" onclick="transver('in_')" value="中序排列" >
+	<input type="button" onclick="transver('bef_')" value="后序排列" >
+	<input type="text" id="time" placeholder="时间间隔(ms)">
+</body>
+</html>

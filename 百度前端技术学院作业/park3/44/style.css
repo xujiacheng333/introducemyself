@@ -1,0 +1,29 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#main{
+	margin: 0 auto;
+	position: relative;
+}
+.box {
+	margin: 8px;
+	border-radius: 5px;
+	position: absolute;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+.box img{
+	width: 182px;
+	height: auto;
+
+}
+#cover{
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	background-color: #000;
+	display: none;
+	position: fixed;
+	z-index: 99;
+}

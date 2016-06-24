@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>42</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!-- <script src="jquery-2.2.0.min.js"></script> -->
+	<style>
+	#selectdate{
+		height: 300px;
+		width: 300px;
+		border: 2px solid #ccc;
+		border-radius: 5px;
+		display: none;
+	}
+	#datetable{
+		border: 1px solid #ccc;
+		height: 250px;
+		width: 280px;
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	td{
+		border: 1px dotted #ccc;
+		cursor: pointer;
+		text-align: center;
+		font-size: 20px;
+		font-family: "微软雅黑";
+	}
+	
+	</style>
+</head>
+<body>
+	<input type="text" value="" id="Date" placeholder="开始时间">
+	<input type="text" value="" id="Date2" placeholder="结束时间">
+	<div id="selectdate">
+		<div style=" margin:10px auto;width: 200px; font-size: 15px;font-family: '微软雅黑';">
+		<select name="" id="year">
+			<!-- <option value="2050">2050</option>
+			<option value="2020">2020</option> -->
+		</select><label for="year">年</label>
+		<select name="" id="month">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+		</select><label for="month">月</label>
+		<input type="button" value="ok" id="ok">
+		</div>
+
+		<table id="datetable" cellspacing="0">
+			<tr>
+				<th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+		</table>
+	</div>
+
+	<script>
+
+	
+
+	//当前的月份-变量
+	
+	var curdate = new Date();
+	var curyear = curdate.getFullYear();
+	var curmonth = curdate.getMonth()+1;
+
+	//所选的输入框
+	var selinput = null;
+	var left = null;
+	var right = null;
+
+	//两个日期之间的日期
+	var betdate ={};
+	
+
+	$(document).ready(function () {
+		//给年份选择框填满所能选择的年份2050-1950
+		for(var year = 1950 ;year<2050 ; year++){
+			$("#year").append("<option value=" + year+ ">" +year + "</option>")
+		}
+		//点击输入框展现日期选择框
+		$("#Date").click(function () {
+			//阻止冒泡
+			event.stopPropagation();
+			$("#selectdate").css({"display":"block","position":"absolute","top":"40px","left":"10px"});
+			selinput = "left";
+		})
+		$("#Date2").click(function () {
+			//阻止冒泡
+			event.stopPropagation();
+			$("#selectdate").css({"display":"block","position":"absolute","top":"40px","left":"180px"});
+			selinput = "right";
+		})
+		$("#ok").click(function () {
+			$("#selectdate").css("display","none")
+			
+		})
+		
+
+		//同步到选择框中
+		changevalue(curyear,curmonth)
+		run()
+		$("#year").change(function () {
+			run()
+		})
+		$("#month").change(function () {
+			run()
+		})
+		
+	})
+
+	//改变日期后运行
+	function run(){
+		var a =getdays($("#year").val(),$("#month").val()) // 当月的天数
+		var b =whichday($("#year").val(),$("#month").val(),1);//当月第一天是星期几
+		var c = getdays($("#year").val(),$("#month").val()-1)//上个月天数
+		draw(a,b,c)
+	}
+
+	//获取月份的天数
+	function getdays(year,month) {
+		var bissextile = false;
+		var days = 30;
+		if (year%4 == 0 && month==2) {
+			days = 29;
+		}else if(year%4 != 0 && month==2 ){
+			days = 28;
+		}
+		switch (month)
+		{
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+			days = 31;
+			break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+			days = 30;
+			break;
+		}
+		return days;
+	}
+
+	//当月第一天是星期几
+	function whichday(year,month,date) {
+		var newdate = new Date(year,month-1,date)
+		// console.log(newdate.getDay())
+		return newdate.getDay()
+	}
+
+	//将相应的天数放进对应的表格中
+	function draw(days,owhichday,predays) {
+		//清空所有格式
+			$("td").css("color","#000");
+			$("td").css("background-color","#fff");
+
+		//判断这个月第一天如果是星期日，则将整体向下移一格
+		if (owhichday== 0 ) {
+			owhichday = 7;
+		}
+		//这个月的
+		for(var i = owhichday , k =1; i<days+owhichday ; i++,k++){
+			$("td")[i].innerHTML = k;
+			$("td")[i].className = "cur";
+			$("td")[i].onclick = function () {
+				
+				
+				if (selinput == "left") {
+					$("#Date").val($("#year").val()+","+$("#month").val()+","+this.innerHTML)
+						left = this;
+
+				}else{
+					$("#Date2").val($("#year").val()+","+$("#month").val()+","+this.innerHTML)
+						right = this;
+				}
+				color();
+			}
+		}
+
+		//上一个月的数字
+		for(var j = predays ,l= owhichday-1 ,m=0; l>-1 ;l--,m++ ){
+			(function (l,j) {
+				$("td")[l].innerHTML = j;
+				$("td")[l].style.color ="#ccc";
+				$("td")[l].onclick=function () {	
+					$("td").removeClass("cur");
+					left=null;
+					right=null;
+					draw(getdays($("#year").val(),$("#month").val()-1),whichday($("#year").val(),$("#month").val()-1,1),getdays($("#year").val(),$("#month").val()-2))
+					changevalue($("#year").val(),$("#month").val()-1)
+				}
+			})(l,j-m)
+		}
+		//下一个月的数字
+		for(var n = owhichday+days ,o = 1; n<$('td').length ; n++,o++){
+			(function(n,o){
+				$("td")[n].innerHTML = o;
+				$("td")[n].style.color ="#ccc";
+
+				$("td")[n].onclick=function () {
+					left=null;
+					right=null;
+					$("td").removeClass("cur");
+					draw(getdays($("#year").val(),parseInt($("#month").val())+1),whichday($("#year").val(),parseInt($("#month").val())+1,1),getdays($("#year").val(),$("#month").val()))
+					changevalue($("#year").val(),parseInt($("#month").val())+1)
+				}
+			})(n,o)	
+		}
+		
+	}
+	//规定left和right的颜色
+	function color() {
+		$("td").css("backgroundColor","#fff")
+		var a = new Date($("#Date").val())
+		var b = new Date($("#Date2").val())
+		//将对象realdate清空
+		for (prop in betdate) { if (betdate.hasOwnProperty(prop)) { delete betdate[prop]; } }
+		var a2 = Date.parse(a)+86400000;
+		var b2 = Date.parse(b);
+		for(var i = a2 , j=0; i<b2 ; i+=86400000,j++){
+			var newDate = new Date()
+			newDate.setTime(i);
+			var realdate = newDate.toLocaleDateString().split('/');
+			betdate[j]= {
+				"parse":i,
+				"year":realdate[0],
+				"month":realdate[1],
+				"date":realdate[2]
+			};
+		}
+
+		drawbetdate()
+		if (left) {
+		left.style.backgroundColor = "#C5C1AA";
+		}
+		if (right) {
+		right.style.backgroundColor = "#CDC673";
+		}
+	}
+	//获得对象的长度
+	function length(o) {
+        var count = 0;
+        for(var i in o){
+            count ++;
+        }
+        return count;
+    };
+	//将两个日期之间的日期转化为相应的格子
+	function drawbetdate() {
+		for(var i = 0 ; i<length(betdate);i++){
+			if ($("#year").val() == betdate[i].year) {
+				if ($("#month").val() == betdate[i].month) {
+					for(var j = 0 ; j<$(".cur").length ; j++){
+						if ($(".cur")[j].innerHTML==betdate[i].date) {
+							$(".cur")[j].style.backgroundColor="#DBDBDB";
+						}
+					}
+					
+				}
+			}
+		}
+	}
+
+
+	//同步到选择框中
+	function changevalue(year,month) {
+		//检测是否为第一月或者第十二月
+		if (month<1) {
+			month = 12;
+			year--;
+
+		}else if(month>12){
+			month = 1 ;
+			year++;
+		}
+
+		$("#year").val(year);
+		$("#month").val(month);
+	}
+
+	</script>
+</body>
+</html>

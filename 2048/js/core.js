@@ -370,7 +370,7 @@
 			}else{
 				if(checkend()){
 					var info =document.getElementById('info')
-					info.innerHTML = "游戏结束!";
+					alert("游戏结束!") ;
 				}
 			}
 		}

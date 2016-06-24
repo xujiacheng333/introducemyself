@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人简历</title>
+	<link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="container-fluid">
+<!-- 相应式导航条 -->
+	<div class="navbar navbar-default " role="navigation">
+		<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+			<span class="sr-only">Toggle Navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="impress.html" class="navbar-brand">个人简历</a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-responsive-collapse" style="">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">首页</a></li>
+				<!-- 下拉框 -->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">个人作品 <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="2048/2048优化版.html">2048小游戏</a></li>
+						<li><a href="fullbackground/fullbackground.html">full background slider</a></li>
+						<li><a href="baiduweb.html">百度前端技术学院作业集</a></li>
+					</ul>
+				</li>
+				<li><a data-toggle="modal"  data-target="#trymodal" href="#">联系方式</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+<!-- 联系方式弹出框 -->
+<div class="modal fade" id="trymodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sy-only"></span></button>
+				<h4>联系方式</h4>
+			</div>
+			<div class="modal-body">
+				<p style="font-size:25px;">
+					徐嘉成 <br>
+					电话:18218433385 <br>
+					QQ: 494209100
+				</p>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 多媒体 -->
+<ul class="media-list">
+    <li class="media">
+        <a class="pull-left" href="#">  
+        <!-- pull-left 可以使图片放在左边 -->
+            <img class="media-object" src="" alt="">
+            <!-- media-object 用来标示图片 -->
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">我是大漠</h4>
+            <div>我是W3cplus站长大漠，我在写Bootstrap框中的媒体对象测试用例</div>
+        </div>
+    </li>
+</ul>
+
+
+</div>
+</body>
+</html>

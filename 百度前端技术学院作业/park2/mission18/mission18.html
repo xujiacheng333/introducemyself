@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission18</title>
+</head>
+<body>
+	<input type="text" id="txt" onkeyup="value=this.value.replace(/\D+/g,'')">
+	<input type="button" id="btn1" value="左侧入">
+	<input type="button" id="btn2" value="右侧入">
+	<input type="button" id="btn3" value="左侧出">
+	<input type="button" id="btn4" value="右侧出">
+	<div id="container"></div>
+	<script type="text/javascript">
+		var text = document.getElementById('txt');
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+		var btn3 = document.getElementById('btn3');
+		var btn4 = document.getElementById('btn4');
+		var container = document.getElementById('container');
+		btn2.onclick=function(){
+			var box = document.createElement("div");
+			box.style.display="block"
+			box.style.width="200px;";
+			box.style.height="100px;";
+			box.style.backgroundColor="#CD2626";
+			box.style.float="left";
+			box.style.marginRight="20px";
+			box.innerHTML=text.value;
+			container.appendChild(box);
+		}
+		btn1.onclick=function(){
+			var box = document.createElement("div");
+			box.style.display="block"
+			box.style.width="200px;";
+			box.style.height="100px;";
+			box.style.backgroundColor="#CD2626";
+			box.style.float="left";
+			box.style.marginRight="20px";
+			box.innerHTML=text.value;
+			container.insertBefore(box,container.firstChild);
+		}
+		btn3.onclick=function () {
+			alert(container.firstChild.innerHTML);
+			container.removeChild(container.firstChild);
+		}
+		btn4.onclick=function () {
+			alert(container.lastChild.innerHTML);
+			container.removeChild(container.lastChild);
+		}
+	</script>
+</body>
+</html>

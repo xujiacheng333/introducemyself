@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1024" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>impress</title>
+	<link rel="stylesheet" href="css/impress.css">
+</head>
+<body class="impress-not-supported">
+	<!-- 当浏览器不适合时显示的提示信息 -->
+	<div class="fallback-message">
+	    <p>你的浏览器不支持该插件，请使用最新款的<b>谷歌</b>、<b>Safari</b> 或 <b>火狐</b>浏览器</p>
+	</div>
+
+	<div id="impress">
+		<div id="name" class="step slide" data-x="-1000" data-y="-1500">
+		    <q>
+		    <span class="myname">我</span><span class="is">叫&nbsp;&nbsp;</span>
+		    <span class="kevin">徐嘉成</span>
+		    </q>
+		</div>
+
+		<div id="granduationschool" class="step slide" data-x="0" data-y="-1500">
+		    <q>
+		    	<span class="graduation">毕业于 </span><span class="school">广东海洋大学</span><br>
+		    	<span class="time">于2016/6/20</span>
+		    </q>
+		</div>
+
+		<div id="speech1" class="step slide" data-x="1000" data-y="-1500">
+		    <q>
+		    	<span class="speech1-1">正在寻找一份</span><span class="speech1-2">前端开发的实习</span><br>
+		    	<span class="speech1-3">众里寻他千百度</span><br><span class="speech1-4">终于,我找到了</span><span class="speech1-5">您</span>
+		    </q>
+		</div>
+
+		<div id="speech2" class="step" data-x="0" data-y="0" data-scale="7">
+				<span class="speech2-1">我知道，我需要您</span><br>
+				<span class="speech2-2">也知道，您会需要我</span>
+		</div>
+		<div id="skill" class="step" data-x="0" data-y="2500" data-scale="3" data-rotate="90">
+			<span class="skill-1">技能：</span> <br>
+			<span>html5/css3:</span><a href="fullbackground/fullbackground.html">纯css3特效</a><br>
+			<span class="col-hc"><span class="col-hc-inner"></span></span>
+			<span>原生JS:</span><a href="2048/2048优化版.html">原生JS作品-2048</a><br>
+			<span class="col-js"><span class="col-js-inner"></span></span>
+		</div>
+		<div id="bootstrap" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
+		    <p>能用bootstrap与JQ快速建站</p>
+		    <span class="Glyphicons">Glyphicons </span>
+		    <span class="Button">Button groups </span>
+		    <span class="Navbar">Navbar </span>
+		    <span class="Breadcrumbs">Breadcrumbs </span>
+		    <span class="Pagination">Pagination  </span>
+		    <span class="Media">Media object  </span>
+		    <span class="Alerts">Alerts  </span>
+		    <span class="Thumbnails">Thumbnails   </span>
+		    <span class="Progress">Progress bars   </span>
+		    <span class="Miscellaneous">Miscellaneous   </span>
+		    <span class="Dropdown">Dropdown menus   </span>
+		    <a href="#">樱上水主页</a>
+		</div>
+		<div id="plug" class="step" data-x="4000" data-y="2000" data-z="-3000" data-rotate="720" data-scale="0.1">
+			<h2>快速学习和使用插件</h2>
+			<img src="img/AngularJS_logo-svg.png" alt="">
+			<img src="img/react-logo_fi.png" alt="">
+			<img src="img/logo.png" alt="">
+		</div>
+		<div  id="showme" class="step" data-x="4500" data-y="0"  data-scale="4">
+				<hr>
+				<h2>好习惯<i class="question">？</i></h2>
+				<span>独立思考，善于合作。</span><br>
+				<hr>
+				<h2>渴望<i class="question">？</i></h2>
+				<span>一次入职机会，一次展现才能的机会！</span><br>
+				<hr>		
+		</div>
+		<div id="colorCharacteristics" class="step" data-x="3500" data-y="3000"  data-scale="4">
+			<span>Characteristics of color</span><br>
+			<span>性格色彩分析</span><br>
+			<img src="img/color2.png" alt="">
+			<div class="line"></div>
+			<div class="explain">
+			<b>黄色性格：</b><br>
+			行动迅速，活力充沛。
+			意志坚强，强烈的进取心，居安思危。
+			自信、不情绪化。
+			</div>
+		</div>
+		<div id="in3d" class="step" data-x="6000" data-y="2500" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="4">
+		<p>
+			<a href="#">github<img src="img/social_logo_github_49.125799573561px_1196537_easyicon.net.png" alt=""></a><br>
+			电话：18218433385
+		</p>
+		</div>
+		<div class="step" data-x="2500" data-y="1000"  data-scale="10"></div>
+
+	</div>
+	<div class="hint">
+	    <p>请用空格键或方向键控制</p>
+	</div>
+
+
+	<!-- 文档的最后插入js文件 -->
+	<script src="js/impress.js"></script>
+	<script>impress().init();</script>
+</body>
+</html>

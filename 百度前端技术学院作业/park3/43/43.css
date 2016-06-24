@@ -1,0 +1,147 @@
+div{
+	height: 300px;
+	width: 500px;
+	position: relative;
+}
+#demo1 img{
+	height: 300px;
+	width: 500px;
+}
+
+#demo2 img{
+	height: 300px;
+	width: 500px;
+	position: absolute;
+}
+#demo2 :first-child{
+	clip-path: polygon(0 0, 66.6% 0, 33.3% 100%, 0 100%);
+	-webkit-clip-path: polygon(0 0, 66.6% 0, 33.3% 100%, 0 100%);
+}
+#demo2 :last-child{
+	clip-path: polygon(66.6% 0, 100% 0, 100% 100%, 33.3% 100%);
+	-webkit-clip-path: polygon(66.6% 0, 100% 0, 100% 100%, 33.3% 100%);
+}
+#demo3 :nth-child(1){
+	position: absolute;
+	height: 300px;
+	width: 350px;
+}
+#demo3 :nth-child(2){
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	right: 0;
+	top: 0;
+}
+#demo3 :nth-child(3){
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	right: 0;
+	bottom: 0;
+}
+#demo4 :nth-child(1){
+	position: absolute;
+	height: 150px;
+	width: 250px;
+	left: 0;
+	top: 0;
+}
+#demo4 :nth-child(2){
+	position: absolute;
+	height: 150px;
+	width: 250px;
+	right: 0;
+	top: 0;
+}
+#demo4 :nth-child(3){
+	position: absolute;
+	height: 150px;
+	width: 250px;
+	left: 0;
+	bottom: 0;
+}
+#demo4 :nth-child(4){
+	position: absolute;
+	height: 150px;
+	width: 250px;
+	right: 0;
+	bottom: 0;
+}
+#demo5 :nth-child(1){
+	position: absolute;
+	height: 200px;
+	width:  333.3px;
+	left: 0;
+	top: 0;
+}
+#demo5 :nth-child(2){
+	position: absolute;
+	height: 150px;
+	width: 166.6px;
+	right: 0;
+	top: 0;
+}
+#demo5 :nth-child(3){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	left: 0;
+	bottom: 0;
+}
+#demo5 :nth-child(4){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	right: 166.6px;
+	bottom: 0;
+}
+#demo5 :nth-child(5){
+	position: absolute;
+	height: 150px;
+	width: 166.6px;
+	right: 0;
+	bottom: 0;
+}
+#demo6 :nth-child(1){
+	position: absolute;
+	height: 200px;
+	width: 333.3px;
+	left: 0;
+	top: 0;
+}
+#demo6 :nth-child(2){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	right: 0;
+	top: 0;
+}
+#demo6 :nth-child(3){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	right: 0;
+	bottom: 100px;
+}
+#demo6 :nth-child(4){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	left: 0;
+	bottom: 0;
+}
+#demo6 :nth-child(5){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	left: 166.6px;
+	bottom: 0;
+}
+#demo6 :nth-child(6){
+	position: absolute;
+	height: 100px;
+	width: 166.6px;
+	right: 0;
+	bottom: 0;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission21</title>
+	<style type="text/css">
+	div{
+		height: 200px;
+
+	}
+	</style>
+</head>
+<body>
+	Tag:
+	<input type="text" id="inputbox1" placeholder="输入爱好"
+	onkeydown="keydown(event)">
+	<div id="habitbox1"></div>
+	<textarea  id="inputbox2" cols="30" rows="10" placeholder="输入爱好 用空格、逗号等隔开，最多同时输入10个"></textarea>
+	<input type="button" id="makesure" value="确认添加">
+	<div id="habitbox2"></div>
+
+	<script>
+		var dataarr1=[];
+	 	var dataarr2=[];
+		window.onload=function(){
+			var inputbox2 = document.getElementById('inputbox2');
+			var inputbox1= document.getElementById('inputbox1')
+			var makesure= document.getElementById('makesure');
+			
+			makesure.onclick=function () {
+				clearbox();
+				inputdata=inputbox2.value.match(/[^,，、\r 	\n\\\/]+/gm);
+				for(var i = 0 ;i<inputdata.length ; i++){
+						//检测数据
+						//试用正则表达式得到的不是全等
+						// var pattern = new RegExp(inputdata[i]);
+						// if (pattern.test(dataarr2)) {
+						if (dataarr2.indexOf(inputdata[i])!==-1) {
+							console.log("已存在该元素"+inputdata[i])
+						}else{
+							if (dataarr2.length<10) {
+								//如果少于10个元素 直接加入这个元素
+								dataarr2.push(inputdata[i]);
+								console.log(dataarr2);
+								
+							}else{
+								//如果等于10个元素 则删除第一个元素
+								dataarr2.splice(0,1);
+								dataarr2.push(inputdata[i]);
+								console.log(dataarr2);
+							}
+						}
+				}
+				drawbox2();
+			}
+		}
+
+		function drawbox2() {
+			for(var i = 0 ;i<dataarr2.length ; i++){
+			var habitbox2 = document.getElementById('habitbox2');
+			var box=document.createElement('div');
+			box.innerHTML=dataarr2[i];
+			box.style.height="50px";
+			box.style.width="100px";
+			box.style.backgroundColor='red';
+			box.style.float = "left";
+			box.style.margin='10px 0 10px 10px';
+			box.style.color="#fff";
+			box.style.lineHeight='50px';
+			box.style.textAlign="center";
+			habitbox2.appendChild(box);
+			box.onmouseover=function(){
+				this.style.backgroundColor="green";
+				this.innerHTML="删除"+this.innerHTML;
+			}
+			box.onmouseout=function () {
+				this.style.backgroundColor="red";
+				this.innerHTML=this.innerHTML.slice(2);
+			}
+			box.onclick=function(){
+				habitbox2.removeChild(this);
+			}
+		}
+		}
+		function clearbox() {
+		var habitbox2 = document.getElementById('habitbox2');
+		habitbox2.innerHTML="";
+		}
+
+		function keydown(event) {
+			var key = event.keyCode;
+			if (key == '13' || key == '32'||key=='9') {
+				
+				var habitbox1 = document.getElementById('habitbox1');
+				habitbox1.innerHTML="";
+				var inputdata=inputbox1.value.match(/[^,，、\r 	\n\\\/]+/gm);
+
+				if (inputdata) {
+				for(var i = 0 ;i<inputdata.length ; i++){
+						//检测数据
+						//试用正则表达式得到的不是全等
+						// var pattern = new RegExp(inputdata[i]);
+						// if (pattern.test(dataarr2)) {
+						if (dataarr1.indexOf(inputdata[i])!==-1) {
+							console.log("已存在该元素"+inputdata[i])
+						}else{
+							if (dataarr1.length<10) {
+								//如果少于10个元素 直接加入这个元素
+								dataarr1.push(inputdata[i]);
+								console.log(dataarr1);
+								
+							}else{
+								//如果等于10个元素 则删除第一个元素
+								dataarr1.splice(0,1);
+								dataarr1.push(inputdata[i]);
+								console.log(dataarr1);
+							}
+						}
+				}
+				}
+				drawbox1();
+				inputbox1.value="";
+
+
+
+
+
+			}
+		}
+
+		function drawbox1() {
+			for(var i = 0 ;i<dataarr1.length ; i++){
+			var habitbox1= document.getElementById('habitbox1');
+			var box=document.createElement('div');
+			box.innerHTML=dataarr1[i];
+			box.style.height="50px";
+			box.style.width="100px";
+			box.style.backgroundColor='red';
+			box.style.float = "left";
+			box.style.margin='10px 0 10px 10px';
+			box.style.color="#fff";
+			box.style.lineHeight='50px';
+			box.style.textAlign="center";
+			habitbox1.appendChild(box);
+			box.onmouseover=function(){
+				this.style.backgroundColor="green";
+				this.innerHTML="删除"+this.innerHTML;
+			}
+			box.onmouseout=function () {
+				this.style.backgroundColor="red";
+				this.innerHTML=this.innerHTML.slice(2);
+			}
+			box.onclick=function(){
+				habitbox1.removeChild(this);
+			}
+			}
+		}
+	</script>
+</body>
+</html>

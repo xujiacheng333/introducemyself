@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission31</title>
+	<style>
+	*{
+		font-size: 20px;
+		font-family: "微软雅黑";
+		margin: 10px;
+	}
+	select{
+		width: 200px;
+	}
+	#main{
+		margin: 100px auto;
+		width: 500px;
+	}
+	.hidden{
+		display: none;
+
+	}
+	.show{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+<div id="main">
+	<form action="">
+	<div onchange="isstu()">
+		<input type="radio" id="choose1" name="student" value=true checked><label for="choose1">在校生</label>
+		<input type="radio" id="choose2" name="student" value=false ><label for="choose2">非在校生</label>
+	</div>
+
+	<!-- 选择是在校生时 -->
+	<label id="studenttrue" >
+		<select type="text" class="isstudent"  id="cityselect" onchange="changecity()">
+		<datalist id="city">
+			<option value="beijing">北京</option>
+			<option value="guangzhou">广州</option>
+			<option value="hangzhou">杭州</option>
+		</datalist>
+		</select>
+		<select type="text" id="schoolselect" >
+		<datalist id="beijing">
+			<option id="op1">北大</option>
+			<option id="op2">清华</option>
+			<option id="op3">北京航海航天学院</option>
+		</datalist>
+		</select>
+	</label>
+
+	<!-- 选择是非在校生时 -->
+	<label id="studentfalse" class="hidden">
+		就业单位<input type="text">
+	</label>
+	</form>
+</div>
+	<script>
+	function g(ele) {
+		return document.getElementById(ele)
+	}
+		function changecity () {
+			console.log(g('cityselect').value)
+			if (g("cityselect").value == "guangzhou") {
+				g('op1').innerHTML = "中大";
+				g('op2').innerHTML = "华南理工";
+				g('op3').innerHTML = "华南农业";
+			}else if (g("cityselect").value == "hangzhou") {
+				g('op1').innerHTML = "浙江大学";
+				g('op2').innerHTML = "浙江电子科技大学";
+				g('op3').innerHTML = "浙江工业大学";
+			}else{
+				g('op1').innerHTML = "北大";
+				g('op2').innerHTML = "清华";
+				g('op3').innerHTML = "北京航海航天学院";
+			}
+		}
+
+		function isstu() {
+			var radio = document.getElementsByName('student');
+			for (var i = radio.length - 1; i >= 0; i--) {
+				if (radio[i].checked) {	
+					switchit(radio[i].value)
+				}
+			}
+		}
+
+		function switchit(bul) {
+			console.log(bul)
+			if (bul == "true") {
+				g('studenttrue').className="show";
+				g('studentfalse').className="hidden";
+			}else if(bul == "false"){
+				g('studenttrue').className="hidden";
+				g('studentfalse').className="show";
+			}
+		}
+	</script>
+</body>
+</html>

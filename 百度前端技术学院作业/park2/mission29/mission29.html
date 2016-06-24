@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission29</title>
+	<style>
+	.err{
+		border:1px solid red;
+	}
+	.ok{
+		border: 1px solid green;
+	}
+	.red{
+		color: red;
+	}
+	.green{
+		color: green;
+	}
+	</style>
+</head>
+<body>
+	<form action="">
+		<label for="name">名称</label>
+		<input type="text" id="name">
+		<button id=submit>提交</button>
+		<p id="result"></p>
+	</form>
+	<script>
+		var text = document.getElementById('name');
+		var btn =  document.getElementById('submit');
+		var result = document.getElementById('result');
+
+		// var er = /\w{4,16}/g;
+
+		text.onblur=function () {
+			if (text.value.length == 0) {
+				text.className= "err";
+				result.innerHTML =" <span class='red'>名字不能为空</span>"
+			}else if(text.value.length<4 || text.value.length>16){
+				text.className= "err";
+				result.innerHTML =" <span class='red'>输入的字数应在4-16个字符</span>"
+			}else
+			{
+				text.className= "ok";
+				result.innerHTML =" <span class='green'>输入正确</span>"
+			}
+
+		}
+	</script>
+</body>
+</html>

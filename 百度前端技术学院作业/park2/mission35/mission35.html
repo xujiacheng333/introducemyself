@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mission35</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	td{
+		display: inline-block;
+		width: 28px;
+		height: 28px;
+		font-size: 25px;
+		text-align: center;
+		font-family: "微软雅黑";
+	}
+	#movegrid{
+		width: 28px;
+		height: 18px;
+		background-color: #66CDAA;
+		border-top: 10px solid red;
+		position: absolute;
+		top: 122px;
+		left: 122px;
+		transition: top 0.25s linear,left 0.25s linear, transform 0.25s linear;
+	}
+	input{
+		width: 100px;
+		height: 50px;
+		font-size: 30px;
+		border-radius: 5px;
+		background-color: #87CEEB;
+	}
+	#rowcount{
+		height: 152px;
+		width: 20px;
+		background-color: #cfcfcf;
+		display: block;
+		float: left;
+		font-size: 15px;
+		overflow: hidden;
+	}
+	#rowcount div{
+		display: block;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		color: #292929;
+		font-family: "微软雅黑";
+		text-decoration: none;
+	}
+	textarea{
+		display: block;
+		width: 200px;
+		height: 150px;
+		background-color: #000;
+		float: left;
+		line-height: 20px;
+		font-size: 20px;
+		color: #fff;
+		overflow: hidden;
+	}
+
+	</style>
+</head>
+<body>
+	<table cellpadding="0" cellspacing="0" border="1" bordercolor="#8B4513">
+		<tr>
+		<td></td>
+		<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+		</tr>
+		<tr>
+		<td>1</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>2</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>3</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>4</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>5</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>6</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>7</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>8</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>9</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<td>10</td>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+	</table>
+	<input type="button" value="go" onclick="go()">
+	<input type="button" value="left" onclick="left()">
+	<input type="button" value="right" onclick="right()"><br>
+	<div id="rowcount">
+
+	</div>
+	<textarea  id="order" cols="30" rows="10"  ></textarea>
+	<input type="button" value="do" onclick="doit()">
+	<div id="movegrid"></div>
+	<script src="script.js"></script>
+	<script src="countrows.js"></script>
+</body>
+</html>
